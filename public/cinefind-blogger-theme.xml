@@ -1,0 +1,2648 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsversion='3' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='utf-8'/>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=5.0' name='viewport'/>
+  <title><data:blog.pageTitle/></title>
+  <b:include data='blog' name='all-head-content'/>
+
+  <!-- Primary SEO Meta Tags -->
+  <meta content='CineFind - Discover movies and TV shows, stream guides, trailers, ratings, and recommendations.' name='description'/>
+  <meta content='movie discovery, where to watch, stream movies, TV shows, cinefind, movie ratings, trailers' name='keywords'/>
+  <meta content='CineFind' name='author'/>
+
+  <!-- Open Graph / Facebook -->
+  <meta content='website' property='og:type'/>
+  <meta expr:content='data:blog.url' property='og:url'/>
+  <meta expr:content='data:blog.title' property='og:title'/>
+  <meta content='Discover trending movies and TV series with real-time streaming availability and ratings on CineFind.' property='og:description'/>
+  <meta content='https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80' property='og:image'/>
+
+  <!-- Twitter Card -->
+  <meta content='summary_large_image' name='twitter:card'/>
+  <meta expr:content='data:blog.title' name='twitter:title'/>
+  <meta content='Discover trending movies and TV series with real-time streaming availability and ratings on CineFind.' name='twitter:description'/>
+  <meta content='https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&amp;fit=crop&amp;w=1200&amp;q=80' name='twitter:image'/>
+
+  <!-- Structured Data JSON-LD for Movie Portal -->
+  <script type='application/ld+json'>
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "CineFind",
+    "url": "https://cinefind.blogspot.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://cinefind.blogspot.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "description": "Legal movie and TV series discovery guide and streaming information platform."
+  }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans for high-contrast modern typography -->
+  <link href='https://fonts.googleapis.com' rel='preconnect'/>
+  <link crossorigin='anonymous' href='https://fonts.gstatic.com' rel='preconnect'/>
+  <link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap' rel='stylesheet'/>
+
+  <b:skin><![CDATA[
+  /* ==========================================================================
+     CineFind - Premium Movie Discovery Blogger Theme
+     Version: 2.5.0
+     Designed for Google Blogger / Blogspot
+     ========================================================================== */
+
+  :root {
+    --bg-main: #0b0e14;
+    --bg-surface: #121824;
+    --bg-surface-elevated: #1a2232;
+    --bg-overlay: rgba(11, 14, 20, 0.85);
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.18);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --brand-primary: #e50914;
+    --brand-primary-hover: #f41b26;
+    --brand-accent: #f59e0b;
+    --rating-gold: #f5c518;
+    --badge-hd: #0284c7;
+    --badge-series: #8b5cf6;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* OLED Black Mode */
+  [data-theme='oled'] {
+    --bg-main: #000000;
+    --bg-surface: #0a0a0a;
+    --bg-surface-elevated: #141414;
+    --border-subtle: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Deep Slate Mode */
+  [data-theme='slate'] {
+    --bg-main: #0f172a;
+    --bg-surface: #1e293b;
+    --bg-surface-elevated: #334155;
+    --border-subtle: rgba(255, 255, 255, 0.06);
+  }
+
+  /* Reset & Base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgba(11, 14, 20, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-subtle);
+    transition: var(--transition);
+  }
+
+  .site-header .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+    gap: 20px;
+  }
+
+  .brand-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  .brand-logo svg {
+    color: var(--brand-primary);
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand-logo span.highlight {
+    color: var(--brand-primary);
+  }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .nav-link {
+    padding: 8px 16px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-radius: var(--radius-full);
+    transition: var(--transition);
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .search-toggle-btn, .theme-toggle-btn, .mobile-menu-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    transition: var(--transition);
+  }
+
+  .search-toggle-btn:hover, .theme-toggle-btn:hover, .mobile-menu-btn:hover {
+    color: #fff;
+    border-color: var(--border-hover);
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+  }
+
+  /* Mobile Nav Drawer */
+  .mobile-nav-drawer {
+    display: none;
+    position: fixed;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--bg-surface);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 20px;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 99;
+    box-shadow: 0 20px 30px rgba(0,0,0,0.5);
+  }
+
+  .mobile-nav-drawer.open {
+    display: flex;
+  }
+
+  .mobile-nav-link {
+    padding: 12px 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .mobile-nav-link:hover, .mobile-nav-link.active {
+    background: var(--brand-primary);
+    color: #fff;
+  }
+
+  /* Monetag Ad Placeholders */
+  .monetag-ad-wrapper {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .monetag-ad-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+  }
+
+  .monetag-ad-container {
+    width: 100%;
+    min-height: 90px;
+    background-color: var(--bg-surface);
+    border: 1px dashed var(--border-subtle);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    transition: var(--transition);
+  }
+
+  .monetag-ad-container.desktop-banner {
+    max-width: 970px;
+    height: 90px;
+  }
+
+  .monetag-ad-container.mobile-banner {
+    max-width: 320px;
+    height: 50px;
+  }
+
+  .monetag-ad-container.sidebar-banner {
+    max-width: 300px;
+    min-height: 250px;
+  }
+
+  .monetag-desktop-only {
+    display: block;
+  }
+
+  .monetag-mobile-only {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .monetag-desktop-only {
+      display: none;
+    }
+    .monetag-mobile-only {
+      display: block;
+    }
+  }
+
+  /* Hero Section */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    max-height: 640px;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background-color: #07090d;
+    margin-bottom: 36px;
+  }
+
+  .hero-backdrop-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    opacity: 0.45;
+    filter: brightness(0.85);
+    transition: opacity 0.6s ease;
+  }
+
+  .hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--bg-main) 10%, rgba(11, 14, 20, 0.75) 50%, rgba(11, 14, 20, 0.4) 100%),
+                linear-gradient(90deg, var(--bg-main) 0%, rgba(11, 14, 20, 0.8) 45%, transparent 80%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 60px;
+    padding-bottom: 48px;
+    max-width: 760px;
+  }
+
+  .hero-meta-badges {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .badge-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    backdrop-filter: blur(8px);
+  }
+
+  .badge-tag.rating {
+    background: rgba(245, 197, 24, 0.15);
+    color: var(--rating-gold);
+    border: 1px solid rgba(245, 197, 24, 0.3);
+  }
+
+  .badge-tag.quality {
+    background: rgba(2, 132, 199, 0.2);
+    color: #38bdf8;
+    border: 1px solid rgba(2, 132, 199, 0.3);
+  }
+
+  .badge-tag.type {
+    background: rgba(139, 92, 246, 0.2);
+    color: #c084fc;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin-bottom: 14px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+
+  .hero-overview {
+    font-size: 1rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 24px;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    border-radius: var(--radius-md);
+    transition: var(--transition);
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: var(--brand-primary);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(229, 9, 20, 0.4);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--brand-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 9, 20, 0.6);
+  }
+
+  .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .hero-dots {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    gap: 8px;
+    z-index: 5;
+  }
+
+  .hero-dot {
+    width: 28px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .hero-dot.active {
+    background: var(--brand-primary);
+    width: 44px;
+  }
+
+  /* Filter & Search Bar */
+  .search-filter-section {
+    margin-bottom: 36px;
+  }
+
+  .search-filter-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-card);
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .search-input-wrapper svg.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    height: 52px;
+    padding: 0 44px 0 48px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: var(--transition);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.2);
+  }
+
+  .search-clear-btn {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8125rem;
+  }
+
+  .search-clear-btn.visible {
+    display: flex;
+  }
+
+  .filter-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    align-items: center;
+  }
+
+  .filter-select {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-size: 0.875rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .filter-select:focus {
+    outline: none;
+    border-color: var(--brand-primary);
+  }
+
+  .filter-select option {
+    background-color: var(--bg-surface);
+    color: #fff;
+  }
+
+  .filter-reset-btn {
+    height: 44px;
+    padding: 0 16px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: var(--transition);
+  }
+
+  .filter-reset-btn:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  /* Content Sections */
+  .section-container {
+    margin-bottom: 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.375rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+  }
+
+  .section-title svg {
+    color: var(--brand-primary);
+    width: 22px;
+    height: 22px;
+  }
+
+  .section-count-badge {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-surface-elevated);
+    padding: 2px 10px;
+    border-radius: var(--radius-full);
+  }
+
+  /* Movie Grid */
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .movie-card {
+    position: relative;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .movie-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--border-hover);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  }
+
+  .card-poster-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    background-color: var(--bg-surface-elevated);
+  }
+
+  .card-poster-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .movie-card:hover .card-poster-img {
+    transform: scale(1.06);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(11, 14, 20, 0.95) 0%, rgba(11, 14, 20, 0.4) 40%, transparent 100%);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+
+  .card-badges {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .card-rating-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    color: var(--rating-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .card-quality-chip {
+    padding: 2px 6px;
+    border-radius: var(--radius-sm);
+    background: var(--badge-hd);
+    color: #fff;
+    font-size: 0.6875rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+  }
+
+  .card-stream-icons {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    gap: 5px;
+    z-index: 2;
+  }
+
+  .stream-pill {
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(6px);
+    text-transform: uppercase;
+  }
+
+  .card-info {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-title {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .card-hover-btn {
+    margin-top: 10px;
+    width: 100%;
+    height: 34px;
+    background-color: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: var(--transition);
+  }
+
+  .movie-card:hover .card-hover-btn {
+    background-color: var(--brand-primary);
+    border-color: var(--brand-primary);
+  }
+
+  /* Empty State */
+  .no-results-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .no-results-state svg {
+    width: 48px;
+    height: 48px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+  }
+
+  .no-results-state h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .no-results-state p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    margin-bottom: 18px;
+  }
+
+  /* Detail Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .modal-overlay.active {
+    display: flex;
+  }
+
+  .detail-modal-card {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+  }
+
+  .modal-close-btn:hover {
+    background-color: var(--brand-primary);
+    transform: scale(1.08);
+  }
+
+  .modal-scroll-body {
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  .modal-hero-header {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+  }
+
+  .modal-backdrop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .modal-hero-fade {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--bg-surface) 0%, rgba(18, 24, 36, 0.7) 60%, transparent 100%);
+  }
+
+  .modal-main-content {
+    padding: 24px 32px 36px 32px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 30px;
+    margin-top: -120px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .modal-poster-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modal-poster-img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .modal-trailer-btn {
+    width: 100%;
+  }
+
+  .modal-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .modal-title {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #fff;
+  }
+
+  .modal-tagline {
+    font-size: 0.9375rem;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+
+  .modal-meta-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .modal-rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    background: rgba(245, 197, 24, 0.15);
+    color: var(--rating-gold);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+
+  .modal-genre-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .genre-pill {
+    padding: 4px 10px;
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .modal-synopsis-title {
+    font-size: 1.0625rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .modal-synopsis-text {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    color: #cbd5e1;
+  }
+
+  .modal-streaming-box {
+    background: var(--bg-surface-elevated);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 16px;
+  }
+
+  .streaming-box-header {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .provider-badges-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .provider-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .modal-cast-crew {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    font-size: 0.8125rem;
+  }
+
+  .cast-item-label {
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .cast-item-val {
+    color: #fff;
+    font-weight: 700;
+  }
+
+  /* Trailer Modal Player */
+  .trailer-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 300;
+    background-color: rgba(0, 0, 0, 0.95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .trailer-modal-overlay.active {
+    display: flex;
+  }
+
+  .trailer-player-card {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+  }
+
+  .trailer-player-card iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Policy / Legal Modals */
+  .policy-content-box {
+    padding: 30px;
+    color: #cbd5e1;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .policy-content-box h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+
+  .policy-content-box h3 {
+    color: #fff;
+    font-size: 1.125rem;
+    margin: 20px 0 8px;
+  }
+
+  /* Footer */
+  .site-footer {
+    margin-top: auto;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    padding: 60px 0 30px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand p {
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    margin-top: 12px;
+    max-width: 320px;
+  }
+
+  .footer-col-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-links-list a {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+  }
+
+  .footer-links-list a:hover {
+    color: var(--brand-primary);
+    transform: translateX(3px);
+  }
+
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  /* Blogger Required Sections & Fallbacks */
+  .blogger-internal-hidden {
+    display: none !important;
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1024px) {
+    .hero-title {
+      font-size: 2.5rem;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    .modal-main-content {
+      grid-template-columns: 180px 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu {
+      display: none;
+    }
+    .mobile-menu-btn {
+      display: flex;
+    }
+    .hero-section {
+      min-height: 480px;
+      max-height: none;
+    }
+    .hero-title {
+      font-size: 2rem;
+    }
+    .movie-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .modal-main-content {
+      grid-template-columns: 1fr;
+      margin-top: -60px;
+      padding: 16px 20px 24px;
+    }
+    .modal-poster-col {
+      max-width: 160px;
+      margin: 0 auto;
+    }
+    .modal-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-title {
+      font-size: 1.625rem;
+    }
+    .hero-buttons .btn {
+      width: 100%;
+    }
+    .card-info {
+      padding: 10px;
+    }
+    .card-title {
+      font-size: 0.875rem;
+    }
+  }
+  ]]></b:skin>
+</head>
+<body data-theme='dark'>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+  <header class='site-header'>
+    <div class='container header-inner'>
+      <!-- Original Brand Identity: CineFind -->
+      <a class='brand-logo' href='#'>
+        <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' viewBox='0 0 24 24'>
+          <rect height='20' rx='2.18' ry='2.18' width='20' x='2' y='2'/>
+          <line x1='7' x2='7' y1='2' y2='22'/>
+          <line x1='17' x2='17' y1='2' y2='22'/>
+          <line x1='2' x2='22' y1='12' y2='12'/>
+          <line x1='2' x2='7' y1='7' y2='7'/>
+          <line x1='2' x2='7' y1='17' y2='17'/>
+          <line x1='17' x2='22' y1='7' y2='7'/>
+          <line x1='17' x2='22' y1='17' y2='17'/>
+        </svg>
+        <span>Cine<span class='highlight'>Find</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav>
+        <ul class='nav-menu'>
+          <li><a class='nav-link active' href='#home' onclick='CineFindApp.filterType("all", event)'>Home</a></li>
+          <li><a class='nav-link' href='#movies' onclick='CineFindApp.filterType("movie", event)'>Movies</a></li>
+          <li><a class='nav-link' href='#series' onclick='CineFindApp.filterType("series", event)'>TV Shows</a></li>
+          <li><a class='nav-link' href='#trending' onclick='CineFindApp.scrollToSection("section-trending")'>Trending</a></li>
+          <li><a class='nav-link' href='#toprated' onclick='CineFindApp.scrollToSection("section-toprated")'>Top Rated</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions -->
+      <div class='header-actions'>
+        <button aria-label='Toggle theme' class='theme-toggle-btn' id='themeToggleBtn' onclick='CineFindApp.toggleTheme()' title='Switch color mode'>
+          <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='18'>
+            <path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'/>
+          </svg>
+        </button>
+        <button aria-label='Open search' class='search-toggle-btn' onclick='CineFindApp.focusSearch()' title='Search catalog'>
+          <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='18'>
+            <circle cx='11' cy='11' r='8'/>
+            <line x1='21' x2='16.65' y1='21' y2='16.65'/>
+          </svg>
+        </button>
+        <button aria-label='Open navigation menu' class='mobile-menu-btn' id='mobileMenuBtn' onclick='CineFindApp.toggleMobileMenu()'>
+          <svg fill='none' height='22' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='22'>
+            <line x1='3' x2='21' y1='12' y2='12'/>
+            <line x1='3' x2='21' y1='6' y2='6'/>
+            <line x1='3' x2='21' y1='18' y2='18'/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class='mobile-nav-drawer' id='mobileNavDrawer'>
+    <a class='mobile-nav-link active' href='#home' onclick='CineFindApp.filterType("all", event)'>All Catalog</a>
+    <a class='mobile-nav-link' href='#movies' onclick='CineFindApp.filterType("movie", event)'>Movies</a>
+    <a class='mobile-nav-link' href='#series' onclick='CineFindApp.filterType("series", event)'>TV Shows</a>
+    <a class='mobile-nav-link' href='#trending' onclick='CineFindApp.scrollToSection("section-trending")'>Trending Today</a>
+    <a class='mobile-nav-link' href='#toprated' onclick='CineFindApp.scrollToSection("section-toprated")'>Top Rated</a>
+  </div>
+
+  <!-- ==========================================
+       MONETAG HEADER AD (Desktop & Tablet)
+       ========================================== -->
+  <div class='container monetag-desktop-only'>
+    <div class='monetag-ad-wrapper' id='monetag-header-ad'>
+      <span class='monetag-ad-label'>Sponsored</span>
+      <div class='monetag-ad-container desktop-banner'>
+        <!-- MONETAG HEADER AD -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MONETAG MOBILE AD (Phones & Small Devices)
+       ========================================== -->
+  <div class='container monetag-mobile-only'>
+    <div class='monetag-ad-wrapper' id='monetag-mobile-ad'>
+      <span class='monetag-ad-label'>Sponsored</span>
+      <div class='monetag-ad-container mobile-banner'>
+        <!-- MONETAG MOBILE AD -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CINEMATIC HERO SECTION
+       ========================================== -->
+  <section class='hero-section' id='heroSection'>
+    <img alt='Featured Movie Backdrop' class='hero-backdrop-img' id='heroBackdrop' loading='eager' src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&amp;fit=crop&amp;w=1920&amp;q=85'/>
+    <div class='hero-gradient'></div>
+    <div class='container'>
+      <div class='hero-content'>
+        <div class='hero-meta-badges' id='heroBadges'>
+          <span class='badge-tag quality'>4K UHD</span>
+          <span class='badge-tag rating'>⭐ 8.8</span>
+          <span class='badge-tag type'>MOVIE</span>
+          <span class='badge-tag'>2026</span>
+          <span class='badge-tag'>SCI-FI / ADVENTURE</span>
+        </div>
+        <h1 class='hero-title' id='heroTitle'>Chronicles of Nova: Beyond Orbit</h1>
+        <p class='hero-overview' id='heroOverview'>
+          When deep space signals point toward an uncharted wormhole on the outer rings of Saturn, an elite reconnaissance squad embarks on a high-stakes voyage across dimensional boundaries to salvage what remains of the pioneering fleet.
+        </p>
+        <div class='hero-buttons'>
+          <button class='btn btn-primary' id='heroViewDetailsBtn' onclick='CineFindApp.openHeroDetails()'>
+            <svg fill='none' height='18' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24' width='18'>
+              <circle cx='12' cy='12' r='10'/>
+              <line x1='12' x2='12' y1='16' y2='12'/>
+              <line x1='12' x2='12.01' y1='8' y2='8'/>
+            </svg>
+            View Details
+          </button>
+          <button class='btn btn-secondary' id='heroWatchTrailerBtn' onclick='CineFindApp.playHeroTrailer()'>
+            <svg fill='currentColor' height='16' viewBox='0 0 24 24' width='16'>
+              <polygon points='5 3 19 12 5 21 5 3'/>
+            </svg>
+            Watch Trailer
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Carousel Navigation Dots -->
+    <div class='hero-dots' id='heroDotsContainer'></div>
+  </section>
+
+  <!-- ==========================================
+       SEARCH & MULTI-CRITERIA FILTERS BAR
+       ========================================== -->
+  <section class='container search-filter-section' id='searchFilterSection'>
+    <div class='search-filter-card'>
+      <!-- Search Input -->
+      <div class='search-input-wrapper'>
+        <svg class='search-icon' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'>
+          <circle cx='11' cy='11' r='8'/>
+          <line x1='21' x2='16.65' y1='21' y2='16.65'/>
+        </svg>
+        <input aria-label='Search movies, TV shows and genres' class='search-input' id='searchInput' oninput='CineFindApp.handleSearch(this.value)' placeholder='Search titles, genres, actors, directors...' type='text'/>
+        <button aria-label='Clear search input' class='search-clear-btn' id='searchClearBtn' onclick='CineFindApp.clearSearch()'>✕</button>
+      </div>
+
+      <!-- Filters Grid -->
+      <div class='filter-controls-grid'>
+        <!-- Media Type -->
+        <select aria-label='Filter by content type' class='filter-select' id='filterType' onchange='CineFindApp.applyFilters()'>
+          <option value='all'>All Types</option>
+          <option value='movie'>Movies Only</option>
+          <option value='series'>TV Shows Only</option>
+        </select>
+
+        <!-- Genre -->
+        <select aria-label='Filter by genre' class='filter-select' id='filterGenre' onchange='CineFindApp.applyFilters()'>
+          <option value='all'>All Genres</option>
+          <option value='Action'>Action</option>
+          <option value='Sci-Fi'>Sci-Fi</option>
+          <option value='Drama'>Drama</option>
+          <option value='Thriller'>Thriller</option>
+          <option value='Adventure'>Adventure</option>
+          <option value='Comedy'>Comedy</option>
+          <option value='Animation'>Animation</option>
+          <option value='Crime'>Crime</option>
+          <option value='Mystery'>Mystery</option>
+        </select>
+
+        <!-- Year -->
+        <select aria-label='Filter by year' class='filter-select' id='filterYear' onchange='CineFindApp.applyFilters()'>
+          <option value='all'>All Release Years</option>
+          <option value='2026'>2026</option>
+          <option value='2025'>2025</option>
+          <option value='2024'>2024</option>
+          <option value='2023'>2023</option>
+          <option value='classic'>2022 &amp; Earlier</option>
+        </select>
+
+        <!-- Rating -->
+        <select aria-label='Filter by rating' class='filter-select' id='filterRating' onchange='CineFindApp.applyFilters()'>
+          <option value='all'>All Ratings</option>
+          <option value='8.5'>8.5+ ⭐ Masterpieces</option>
+          <option value='8.0'>8.0+ ⭐ Highly Rated</option>
+          <option value='7.0'>7.0+ ⭐ Good &amp; Above</option>
+        </select>
+
+        <!-- Sort By -->
+        <select aria-label='Sort catalog' class='filter-select' id='filterSort' onchange='CineFindApp.applyFilters()'>
+          <option value='popularity'>Sort: Most Popular</option>
+          <option value='rating'>Sort: Highest Rating</option>
+          <option value='releaseDate'>Sort: Newest Release</option>
+          <option value='title'>Sort: Title (A-Z)</option>
+        </select>
+
+        <!-- Reset -->
+        <button class='filter-reset-btn' onclick='CineFindApp.resetAllFilters()'>
+          Reset Filters
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       DYNAMIC FILTER RESULTS (WHEN FILTERING / SEARCHING)
+       ========================================== -->
+  <main class='container'>
+    <div id='filteredResultsWrapper' style='display: none;'>
+      <div class='section-container'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><polygon points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3'/></svg>
+            <span id='filteredResultsTitle'>Search &amp; Filter Results</span>
+          </h2>
+          <span class='section-count-badge' id='filteredCountBadge'>0 titles</span>
+        </div>
+        <div class='movie-grid' id='filteredResultsGrid'></div>
+      </div>
+    </div>
+
+    <!-- DEFAULT CATEGORIZED CATALOG SECTIONS -->
+    <div id='defaultSectionsWrapper'>
+
+      <!-- Section: Trending Today -->
+      <section class='section-container' id='section-trending'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' viewBox='0 0 24 24'><polyline points='23 6 13.5 15.5 8.5 10.5 1 18'/><polyline points='17 6 23 6 23 12'/></svg>
+            Trending Today
+          </h2>
+          <span class='section-count-badge'>Updated Daily</span>
+        </div>
+        <div class='movie-grid' id='gridTrending'></div>
+      </section>
+
+      <!-- ==========================================
+           MONETAG CONTENT AD
+           ========================================== -->
+      <div class='monetag-ad-wrapper' id='monetag-content-ad'>
+        <span class='monetag-ad-label'>Advertisement</span>
+        <div class='monetag-ad-container desktop-banner'>
+          <!-- MONETAG CONTENT AD -->
+        </div>
+      </div>
+
+      <!-- Section: Popular Movies -->
+      <section class='section-container' id='section-movies'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect height='20' rx='2' ry='2' width='20' x='2' y='2'/><line x1='7' x2='7' y1='2' y2='22'/><line x1='17' x2='17' y1='2' y2='22'/></svg>
+            Popular Movies
+          </h2>
+          <span class='section-count-badge'>In Theaters &amp; Streaming</span>
+        </div>
+        <div class='movie-grid' id='gridPopularMovies'></div>
+      </section>
+
+      <!-- Section: Popular TV Shows -->
+      <section class='section-container' id='section-series'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><rect height='15' rx='2' width='20' x='2' y='7'/><polyline points='17 2 12 7 7 2'/></svg>
+            Popular TV Shows
+          </h2>
+          <span class='section-count-badge'>Binge Worthy Series</span>
+        </div>
+        <div class='movie-grid' id='gridPopularSeries'></div>
+      </section>
+
+      <!-- ==========================================
+           MONETAG SIDEBAR AD
+           ========================================== -->
+      <div class='monetag-ad-wrapper' id='monetag-sidebar-ad'>
+        <span class='monetag-ad-label'>Sponsored</span>
+        <div class='monetag-ad-container sidebar-banner'>
+          <!-- MONETAG SIDEBAR AD -->
+        </div>
+      </div>
+
+      <!-- Section: Top Rated of All Time -->
+      <section class='section-container' id='section-toprated'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/></svg>
+            Top Rated Masters
+          </h2>
+          <span class='section-count-badge'>Critics &amp; Audience Choice</span>
+        </div>
+        <div class='movie-grid' id='gridTopRated'></div>
+      </section>
+
+      <!-- Section: Latest Releases -->
+      <section class='section-container' id='section-latest'>
+        <div class='section-header'>
+          <h2 class='section-title'>
+            <svg fill='none' stroke='currentColor' stroke-width='2' viewBox='0 0 24 24'><circle cx='12' cy='12' r='10'/><polyline points='12 6 12 12 14 14'/></svg>
+            New Releases
+          </h2>
+          <span class='section-count-badge'>Just Added</span>
+        </div>
+        <div class='movie-grid' id='gridLatestReleases'></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================
+       BLOGGER STANDARD SECTION & POST INTEGRATION
+       Mandatory for Blogger Theme Engine Validation
+       ========================================== -->
+  <div class='container blogger-internal-hidden'>
+    <b:section class='main' id='bloggerMainSection' maxwidgets='1' showaddelement='no'>
+      <b:widget id='Blog1' locked='true' title='Blog Posts' type='Blog' version='2'>
+        <b:includable id='main'>
+          <b:if cond='data:view.isPost'>
+            <article class='blogger-native-post'>
+              <h1><data:post.title/></h1>
+              <div class='post-body-content'><data:post.body/></div>
+            </article>
+          </b:if>
+        </b:includable>
+      </b:widget>
+    </b:section>
+  </div>
+
+  <!-- ==========================================
+       MOVIE / SHOW DETAILS MODAL
+       ========================================== -->
+  <div aria-modal='true' class='modal-overlay' id='movieDetailModal' role='dialog'>
+    <div class='detail-modal-card'>
+      <button aria-label='Close details modal' class='modal-close-btn' onclick='CineFindApp.closeDetailModal()'>✕</button>
+      <div class='modal-scroll-body'>
+        <!-- Backdrop Header -->
+        <div class='modal-hero-header'>
+          <img alt='Backdrop' class='modal-backdrop-img' id='modalBackdrop' src=''/>
+          <div class='modal-hero-fade'></div>
+        </div>
+        <!-- Content Grid -->
+        <div class='modal-main-content'>
+          <!-- Left Column: Poster & Action -->
+          <div class='modal-poster-col'>
+            <img alt='Poster' class='modal-poster-img' id='modalPoster' src=''/>
+            <button class='btn btn-primary modal-trailer-btn' id='modalTrailerBtn' onclick='CineFindApp.playCurrentModalTrailer()'>
+              <svg fill='currentColor' height='16' viewBox='0 0 24 24' width='16'><polygon points='5 3 19 12 5 21 5 3'/></svg>
+              Watch Trailer
+            </button>
+          </div>
+          <!-- Right Column: Metadata & Where to Stream -->
+          <div class='modal-info-col'>
+            <div class='modal-meta-row'>
+              <span class='modal-rating-badge' id='modalRating'>⭐ 8.5</span>
+              <span class='badge-tag quality' id='modalQuality'>4K UHD</span>
+              <span class='badge-tag type' id='modalType'>MOVIE</span>
+              <span class='badge-tag' id='modalYear'>2026</span>
+              <span class='badge-tag' id='modalRuntime'>2h 18m</span>
+            </div>
+            <h2 class='modal-title' id='modalTitle'>Movie Title</h2>
+            <p class='modal-tagline' id='modalTagline'></p>
+            <div class='modal-genre-pills' id='modalGenres'></div>
+
+            <!-- Synopsis -->
+            <div>
+              <h3 class='modal-synopsis-title'>Overview</h3>
+              <p class='modal-synopsis-text' id='modalOverview'></p>
+            </div>
+
+            <!-- Where to Stream (Legal Discovery Guide) -->
+            <div class='modal-streaming-box'>
+              <div class='streaming-box-header'>Legal Streaming &amp; Watch Providers</div>
+              <div class='provider-badges-list' id='modalProviders'></div>
+            </div>
+
+            <!-- Cast & Crew -->
+            <div class='modal-cast-crew'>
+              <div>
+                <span class='cast-item-label'>Director</span>
+                <span class='cast-item-val' id='modalDirector'>Director Name</span>
+              </div>
+              <div>
+                <span class='cast-item-label'>Starring</span>
+                <span class='cast-item-val' id='modalStarring'>Cast Names</span>
+              </div>
+              <div>
+                <span class='cast-item-label'>Original Audio</span>
+                <span class='cast-item-val' id='modalAudio'>Dolby Atmos 5.1</span>
+              </div>
+            </div>
+
+            <!-- ==========================================
+                 MONETAG AD PLACEMENT 3: IN-CONTENT MODAL AD
+                 ========================================== -->
+            <div class='monetag-ad-wrapper' id='monetag-incontent-ad' style='margin: 16px 0 0 0;'>
+              <span class='monetag-ad-label'>Sponsored Link</span>
+              <div class='monetag-ad-container' style='min-height: 80px; width: 100%;'>
+                <!-- MONETAG AD CODE START -->
+                <!-- Paste your Monetag generated ad code here (e.g. In-Content Native or Banner) -->
+                <span style='opacity: 0.6;'>Monetag In-Content Ad Placement (Detail Dialog)</span>
+                <!-- MONETAG AD CODE END -->
+              </div>
+            </div>
+
+            <!-- Similar Recommendations -->
+            <div style='margin-top: 14px;'>
+              <h3 class='modal-synopsis-title'>More Like This</h3>
+              <div class='movie-grid' id='modalSimilarGrid' style='grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px;'></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       TRAILER PLAYER MODAL
+       ========================================== -->
+  <div aria-modal='true' class='trailer-modal-overlay' id='trailerPlayerModal' role='dialog'>
+    <div class='trailer-player-card'>
+      <button aria-label='Close trailer' class='modal-close-btn' onclick='CineFindApp.closeTrailerPlayer()'>✕</button>
+      <iframe allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen='true' id='trailerIframe' src=''></iframe>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       LEGAL / POLICY MODAL
+       ========================================== -->
+  <div aria-modal='true' class='modal-overlay' id='policyModal' role='dialog'>
+    <div class='detail-modal-card' style='max-width: 720px;'>
+      <button aria-label='Close policy' class='modal-close-btn' onclick='CineFindApp.closePolicyModal()'>✕</button>
+      <div class='modal-scroll-body'>
+        <div class='policy-content-box' id='policyContentBox'></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class='site-footer'>
+    <div class='container'>
+      <div class='footer-grid'>
+        <!-- Brand & Description -->
+        <div class='footer-brand'>
+          <a class='brand-logo' href='#'>
+            <svg fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2.2' viewBox='0 0 24 24' width='24'>
+              <rect height='20' rx='2.18' ry='2.18' width='20' x='2' y='2'/>
+              <line x1='7' x2='7' y1='2' y2='22'/>
+              <line x1='17' x2='17' y1='2' y2='22'/>
+              <line x1='2' x2='22' y1='12' y2='12'/>
+            </svg>
+            <span>Cine<span class='highlight'>Find</span></span>
+          </a>
+          <p>
+            Your ultimate cinematic hub for discovering movies, streaming series, ratings, official trailers, and legal platform availability.
+          </p>
+        </div>
+
+        <!-- Quick Explore -->
+        <div>
+          <h4 class='footer-col-title'>Explore</h4>
+          <ul class='footer-links-list'>
+            <li><a href='#trending' onclick='CineFindApp.scrollToSection("section-trending")'>Trending Now</a></li>
+            <li><a href='#movies' onclick='CineFindApp.filterType("movie", event)'>Browse Movies</a></li>
+            <li><a href='#series' onclick='CineFindApp.filterType("series", event)'>Browse TV Series</a></li>
+            <li><a href='#toprated' onclick='CineFindApp.scrollToSection("section-toprated")'>Top Rated</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal & Compliance -->
+        <div>
+          <h4 class='footer-col-title'>Legal</h4>
+          <ul class='footer-links-list'>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("privacy")'>Privacy Policy</a></li>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("terms")'>Terms of Service</a></li>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("dmca")'>DMCA &amp; Copyright</a></li>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("disclaimer")'>Legal Disclaimer</a></li>
+          </ul>
+        </div>
+
+        <!-- Information -->
+        <div>
+          <h4 class='footer-col-title'>About</h4>
+          <ul class='footer-links-list'>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("about")'>About CineFind</a></li>
+            <li><a href='javascript:void(0)' onclick='CineFindApp.showPolicy("contact")'>Contact Us</a></li>
+            <li><a href='/sitemap.xml'>Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class='footer-bottom'>
+        <div>
+          &#169; <span id='currentYear'>2026</span> CineFind. All rights reserved. Created for movie lovers worldwide.
+        </div>
+        <div>
+          <span>Notice: CineFind does not host or upload any video files. All links &amp; metadata are for informational discovery purposes.</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       VANILLA JAVASCRIPT LOGIC & DEMO DATASET
+       Wrapped in CDATA for 100% Blogger XML Safety
+       ========================================== -->
+  <script type='text/javascript'>
+  //<![CDATA[
+
+  /* ==========================================================================
+     CINEFIND CONFIGURATION & SETTINGS
+     You can easily customize site details, social links, and demo items below!
+     ========================================================================== */
+  const CINEFIND_CONFIG = {
+    siteName: "CineFind",
+    siteTagline: "Movie & TV Show Discovery Platform",
+    logoText: "CineFind",
+    primaryColor: "#e50914",
+    defaultLanguage: "en-US",
+    defaultCountry: "US",
+    socialLinks: {
+      twitter: "https://twitter.com",
+      facebook: "https://facebook.com",
+      instagram: "https://instagram.com"
+    },
+    // Optional external movie API placeholder (e.g., TMDB v3)
+    // Note: Do NOT expose private API keys in client-side code in public production.
+    apiEndpoint: "", 
+    apiKey: ""
+  };
+
+  /* ==========================================================================
+     DEMO CATALOG DATASET
+     Replace, edit, or add new movie/show objects below!
+     ========================================================================== */
+  const CINEFIND_DATA = [
+    {
+      id: "cf-101",
+      title: "Chronicles of Nova: Beyond Orbit",
+      originalTitle: "Chronicles of Nova",
+      tagline: "The stars remember what humanity forgot.",
+      type: "movie",
+      year: 2026,
+      releaseDate: "2026-04-14",
+      rating: 8.8,
+      votes: "142K",
+      quality: "4K UHD",
+      runtime: "2h 24m",
+      genres: ["Sci-Fi", "Adventure", "Drama"],
+      overview: "When deep space signals point toward an uncharted wormhole on the outer rings of Saturn, an elite reconnaissance squad embarks on a high-stakes voyage across dimensional boundaries to salvage what remains of the pioneering fleet.",
+      director: "Elena Vance",
+      starring: "Marcus Thorne, Linnea Sterling, David O'Connor",
+      audio: "Dolby Atmos 7.1 / English, Spanish, French",
+      posterUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "dQw4w9WgXcQ", // YouTube trailer ID placeholder
+      providers: ["Netflix", "Apple TV+", "Prime Video"],
+      isFeatured: true,
+      isTrending: true,
+      isTopRated: true,
+      isLatest: true
+    },
+    {
+      id: "cf-102",
+      title: "Shadow Protocol: Tokyo Underworld",
+      originalTitle: "Shadow Protocol",
+      tagline: "Silence is their deadliest weapon.",
+      type: "movie",
+      year: 2025,
+      releaseDate: "2025-11-08",
+      rating: 8.4,
+      votes: "98K",
+      quality: "4K UHD",
+      runtime: "1h 58m",
+      genres: ["Action", "Thriller", "Crime"],
+      overview: "An undercover forensic operative in neon-lit Shinjuku uncovers a conspiracy intertwining high-frequency cyber espionage with ancient clan syndicates, forcing him into a lethal race against time.",
+      director: "Kenji Takahashi",
+      starring: "Ren Tanaka, Maya Hoshino, Liam Cross",
+      audio: "DTS-HD Master 5.1 / Japanese, English",
+      posterUrl: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "L61p2uyiMSo",
+      providers: ["Prime Video", "Max", "Disney+"],
+      isFeatured: true,
+      isTrending: true,
+      isTopRated: true,
+      isLatest: false
+    },
+    {
+      id: "cf-103",
+      title: "Echoes of the Crown",
+      originalTitle: "Echoes of the Crown",
+      tagline: "Power never sleeps.",
+      type: "series",
+      year: 2026,
+      releaseDate: "2026-02-19",
+      rating: 8.9,
+      votes: "185K",
+      quality: "4K HDR",
+      runtime: "3 Seasons (24 Eps)",
+      genres: ["Drama", "Mystery", "History"],
+      overview: "A sprawling political saga dissecting three rival royal houses during an unforgiving Nordic winter, where secret alliances, poisoned wine, and succession crises threaten total continental collapse.",
+      director: "Astrid Lindholm",
+      starring: "Freja Sorensen, Henrik Blom, Clara Dupont",
+      audio: "Dolby Atmos 5.1 / English, German",
+      posterUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "kJQP7kiw5Fk",
+      providers: ["Max", "Apple TV+"],
+      isFeatured: true,
+      isTrending: true,
+      isTopRated: true,
+      isLatest: true
+    },
+    {
+      id: "cf-104",
+      title: "The Quantum Enigma",
+      originalTitle: "The Quantum Enigma",
+      tagline: "Reality is merely an equation waiting to be solved.",
+      type: "movie",
+      year: 2025,
+      releaseDate: "2025-08-15",
+      rating: 8.2,
+      votes: "74K",
+      quality: "HD",
+      runtime: "2h 11m",
+      genres: ["Sci-Fi", "Mystery", "Thriller"],
+      overview: "Two rival quantum physicists at CERN inadvertently trigger a localized time dilation bubble, experiencing conflicting memories of catastrophic world events before they even take place.",
+      director: "Claire Bennet",
+      starring: "Oliver Walsh, Sophie Moreau, Julian Reed",
+      audio: "Dolby Digital 5.1 / English",
+      posterUrl: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "fJ9rUzIMcZQ",
+      providers: ["Netflix", "Hulu"],
+      isFeatured: false,
+      isTrending: true,
+      isTopRated: false,
+      isLatest: false
+    },
+    {
+      id: "cf-105",
+      title: "Cyberpunk: Neon District",
+      originalTitle: "Neon District",
+      tagline: "In the high-tech slums, memory is currency.",
+      type: "series",
+      year: 2026,
+      releaseDate: "2026-01-10",
+      rating: 8.7,
+      votes: "115K",
+      quality: "4K UHD",
+      runtime: "2 Seasons (18 Eps)",
+      genres: ["Action", "Sci-Fi", "Animation"],
+      overview: "An underground neural hacker in a hyper-capitalist dystopian megacity takes on a megacorporation after stumbling upon classified neuro-implants that can rewrite human consciousness.",
+      director: "Shinichi Watanabe",
+      starring: "Kai Mitchell, Akira Sato, Chloe Adams",
+      audio: "Dolby Atmos 5.1 / English, Japanese",
+      posterUrl: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "J---aiyznGQ",
+      providers: ["Netflix"],
+      isFeatured: false,
+      isTrending: true,
+      isTopRated: true,
+      isLatest: true
+    },
+    {
+      id: "cf-106",
+      title: "The Last Lighthouse",
+      originalTitle: "The Last Lighthouse",
+      tagline: "Some lights guide you home. Others lead you into the abyss.",
+      type: "movie",
+      year: 2024,
+      releaseDate: "2024-10-31",
+      rating: 7.9,
+      votes: "62K",
+      quality: "HD",
+      runtime: "1h 49m",
+      genres: ["Drama", "Mystery", "Thriller"],
+      overview: "Stationed on an isolated granite outcrop off the stormy coast of Maine, a solitary lighthouse keeper begins suspecting that the shipwrecks occurring below are orchestrated by whispers in the fog.",
+      director: "Arthur Pendelton",
+      starring: "Sean Harris, Fiona Shaw",
+      audio: "Dolby Digital 5.1 / English",
+      posterUrl: "https://images.unsplash.com/photo-1514306191717-452ec28c7814?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "HyHNuVaZJ-k",
+      providers: ["Prime Video", "Apple TV+"],
+      isFeatured: false,
+      isTrending: false,
+      isTopRated: false,
+      isLatest: false
+    },
+    {
+      id: "cf-107",
+      title: "Grand Horizon: Velocity",
+      originalTitle: "Grand Horizon",
+      tagline: "Burn the tarmac. Chase the impossible.",
+      type: "movie",
+      year: 2025,
+      releaseDate: "2025-07-22",
+      rating: 8.1,
+      votes: "88K",
+      quality: "4K UHD",
+      runtime: "2h 05m",
+      genres: ["Action", "Adventure"],
+      overview: "An expelled Formula 1 test engineer joins an underground transnational endurance rally spanning from Monaco to the Sahara, driving an experimental prototype with dangerously unstable synthetic fuel.",
+      director: "Matteo Rossi",
+      starring: "Lucas Vance, Isabella Morales, Paul Walker Jr.",
+      audio: "Dolby Atmos 7.1 / English, Italian",
+      posterUrl: "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "Bey4XXJAqS8",
+      providers: ["Prime Video", "Disney+"],
+      isFeatured: false,
+      isTrending: true,
+      isTopRated: false,
+      isLatest: false
+    },
+    {
+      id: "cf-108",
+      title: "Wilderness Detective",
+      originalTitle: "Wilderness Detective",
+      tagline: "Nature buries secrets deep.",
+      type: "series",
+      year: 2025,
+      releaseDate: "2025-09-04",
+      rating: 8.5,
+      votes: "79K",
+      quality: "HD",
+      runtime: "1 Season (10 Eps)",
+      genres: ["Crime", "Drama", "Mystery"],
+      overview: "A disgraced former federal marshal takes a park ranger posting in the treacherous Pacific Northwest wilderness, only to discover that missing hikers are tied to an illicit black-market wildlife ring.",
+      director: "Sarah Jenkins",
+      starring: "Brett Carlson, Naomi Young, Victor Garber",
+      audio: "Dolby Digital 5.1 / English",
+      posterUrl: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "TcMBFSGVi1c",
+      providers: ["Hulu", "Disney+"],
+      isFeatured: false,
+      isTrending: false,
+      isTopRated: true,
+      isLatest: false
+    },
+    {
+      id: "cf-109",
+      title: "The Baker Street Files",
+      originalTitle: "Baker Street Files",
+      tagline: "Elementary was just the beginning.",
+      type: "series",
+      year: 2024,
+      releaseDate: "2024-03-12",
+      rating: 8.6,
+      votes: "130K",
+      quality: "4K UHD",
+      runtime: "2 Seasons (16 Eps)",
+      genres: ["Crime", "Drama", "Mystery"],
+      overview: "A gritty, modern-era reinvention of London's legendary consultative detectives tackling dark web syndicate crime, algorithmic heists, and diplomatic assassinations.",
+      director: "Dominic Thorne",
+      starring: "Benedict Sterling, Martin Hughes",
+      audio: "Dolby Atmos 5.1 / English",
+      posterUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "xK7S9mrFWL4",
+      providers: ["Netflix", "Apple TV+"],
+      isFeatured: false,
+      isTrending: false,
+      isTopRated: true,
+      isLatest: false
+    },
+    {
+      id: "cf-110",
+      title: "Kingdom of Sands",
+      originalTitle: "Kingdom of Sands",
+      tagline: "Empire is built on blood and shifting dunes.",
+      type: "movie",
+      year: 2026,
+      releaseDate: "2026-03-01",
+      rating: 8.3,
+      votes: "54K",
+      quality: "4K UHD",
+      runtime: "2h 32m",
+      genres: ["Adventure", "Drama", "Action"],
+      overview: "In an opulent desert realm on the cusp of an industrial revolution, a rebellious desert nomad princess unites exiled tribes to reclaim the sacred oasis water rights from a despotic oil baron.",
+      director: "Tariq Mansoor",
+      starring: "Layla Zafar, Omar Bashir, Clive Owen",
+      audio: "Dolby Atmos 7.1 / Arabic, English",
+      posterUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "8g18jFHCLgk",
+      providers: ["Max", "Prime Video"],
+      isFeatured: false,
+      isTrending: true,
+      isTopRated: false,
+      isLatest: true
+    },
+    {
+      id: "cf-111",
+      title: "Silent Deep: Mariana Trench",
+      originalTitle: "Silent Deep",
+      tagline: "Seven miles down, no one can hear you scream.",
+      type: "movie",
+      year: 2025,
+      releaseDate: "2025-06-18",
+      rating: 7.8,
+      votes: "43K",
+      quality: "HD",
+      runtime: "1h 52m",
+      genres: ["Sci-Fi", "Thriller", "Horror"],
+      overview: "A research submersible reaches the abyssal depth of the Challenger Deep, encountering bioluminescent apex predators and thermal hydrothermal vents concealing ancient organic biosignatures.",
+      director: "Carl Lindqvist",
+      starring: "Rachel Ward, Daniel Wu",
+      audio: "Dolby Digital 5.1 / English",
+      posterUrl: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "9bZkp7q19f0",
+      providers: ["Hulu", "Disney+"],
+      isFeatured: false,
+      isTrending: false,
+      isTopRated: false,
+      isLatest: false
+    },
+    {
+      id: "cf-112",
+      title: "Chef de Cuisine",
+      originalTitle: "Chef de Cuisine",
+      tagline: "Perfection has a bitter aftertaste.",
+      type: "movie",
+      year: 2024,
+      releaseDate: "2024-11-20",
+      rating: 8.5,
+      votes: "92K",
+      quality: "4K UHD",
+      runtime: "1h 56m",
+      genres: ["Drama", "Comedy"],
+      overview: "A visionary Parisian chef risks bankruptcy, mental sanity, and his brigade's loyalty in pursuit of his third Michelin star during an unpredictable winter culinary season.",
+      director: "Jean-Luc Moreau",
+      starring: "Pierre Delon, Camille Cottin, Mathieu Kassovitz",
+      audio: "Dolby Atmos 5.1 / French, English",
+      posterUrl: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
+      backdropUrl: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1920&q=85",
+      trailerId: "2Vv-BfVoq4g",
+      providers: ["Apple TV+", "Prime Video"],
+      isFeatured: false,
+      isTrending: false,
+      isTopRated: true,
+      isLatest: false
+    }
+  ];
+
+  /* ==========================================================================
+     CINEFIND CORE APPLICATION ENGINE
+     ========================================================================== */
+  const CineFindApp = {
+    currentHeroIndex: 0,
+    featuredItems: [],
+    currentModalItem: null,
+    heroTimer: null,
+
+    init: function() {
+      // Set current year in footer
+      const yearEl = document.getElementById('currentYear');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // Gather featured items for hero
+      this.featuredItems = CINEFIND_DATA.filter(item => item.isFeatured);
+      if (this.featuredItems.length === 0) {
+        this.featuredItems = CINEFIND_DATA.slice(0, 3);
+      }
+
+      this.renderHero(0);
+      this.setupHeroDots();
+      this.startHeroCarousel();
+
+      // Render default sections
+      this.renderSection('gridTrending', CINEFIND_DATA.filter(i => i.isTrending));
+      this.renderSection('gridPopularMovies', CINEFIND_DATA.filter(i => i.type === 'movie'));
+      this.renderSection('gridPopularSeries', CINEFIND_DATA.filter(i => i.type === 'series'));
+      this.renderSection('gridTopRated', CINEFIND_DATA.filter(i => i.isTopRated || i.rating >= 8.5));
+      this.renderSection('gridLatestReleases', CINEFIND_DATA.filter(i => i.year >= 2025));
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          this.closeDetailModal();
+          this.closeTrailerPlayer();
+          this.closePolicyModal();
+        }
+      });
+    },
+
+    /* Hero Section Logic */
+    renderHero: function(index) {
+      if (!this.featuredItems[index]) return;
+      const item = this.featuredItems[index];
+      this.currentHeroIndex = index;
+
+      const backdrop = document.getElementById('heroBackdrop');
+      const title = document.getElementById('heroTitle');
+      const overview = document.getElementById('heroOverview');
+      const badges = document.getElementById('heroBadges');
+
+      if (backdrop) {
+        backdrop.style.opacity = '0.2';
+        setTimeout(() => {
+          backdrop.src = item.backdropUrl || item.posterUrl;
+          backdrop.style.opacity = '0.45';
+        }, 200);
+      }
+
+      if (title) title.textContent = item.title;
+      if (overview) overview.textContent = item.overview;
+
+      if (badges) {
+        badges.innerHTML = `
+          <span class="badge-tag quality">${item.quality || 'HD'}</span>
+          <span class="badge-tag rating">⭐ ${item.rating.toFixed(1)}</span>
+          <span class="badge-tag type">${item.type.toUpperCase()}</span>
+          <span class="badge-tag">${item.year}</span>
+          <span class="badge-tag">${(item.genres || []).slice(0, 2).join(' / ').toUpperCase()}</span>
+        `;
+      }
+
+      // Update dot active state
+      const dots = document.querySelectorAll('.hero-dot');
+      dots.forEach((dot, i) => {
+        if (i === index) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    },
+
+    setupHeroDots: function() {
+      const container = document.getElementById('heroDotsContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      this.featuredItems.forEach((_, idx) => {
+        const dot = document.createElement('div');
+        dot.className = `hero-dot ${idx === 0 ? 'active' : ''}`;
+        dot.title = `Slide ${idx + 1}`;
+        dot.onclick = () => {
+          clearInterval(this.heroTimer);
+          this.renderHero(idx);
+          this.startHeroCarousel();
+        };
+        container.appendChild(dot);
+      });
+    },
+
+    startHeroCarousel: function() {
+      if (this.heroTimer) clearInterval(this.heroTimer);
+      this.heroTimer = setInterval(() => {
+        const nextIndex = (this.currentHeroIndex + 1) % this.featuredItems.length;
+        this.renderHero(nextIndex);
+      }, 7000);
+    },
+
+    openHeroDetails: function() {
+      const item = this.featuredItems[this.currentHeroIndex];
+      if (item) this.openDetailModal(item.id);
+    },
+
+    playHeroTrailer: function() {
+      const item = this.featuredItems[this.currentHeroIndex];
+      if (item) this.playTrailer(item.trailerId);
+    },
+
+    /* Render Movie Card HTML */
+    createCardHtml: function(item) {
+      const genresList = (item.genres || []).slice(0, 2).join(', ');
+      const streamBadges = (item.providers || []).slice(0, 2).map(p => `<span class="stream-pill">${p}</span>`).join('');
+      const fallbackImg = "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=400&q=80";
+
+      return `
+        <article class="movie-card" onclick="CineFindApp.openDetailModal('${item.id}')" role="button" tabindex="0" aria-label="${item.title}">
+          <div class="card-poster-wrapper">
+            <img class="card-poster-img" src="${item.posterUrl}" alt="${item.title} Poster" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';"/>
+            <div class="card-overlay"></div>
+            <div class="card-badges">
+              <span class="card-rating-chip">⭐ ${item.rating.toFixed(1)}</span>
+              <span class="card-quality-chip">${item.quality || 'HD'}</span>
+            </div>
+            <div class="card-stream-icons">
+              ${streamBadges}
+            </div>
+          </div>
+          <div class="card-info">
+            <h3 class="card-title">${item.title}</h3>
+            <div class="card-sub">
+              <span>${item.year} &bull; ${item.type === 'series' ? 'TV' : 'Movie'}</span>
+              <span>${genresList}</span>
+            </div>
+            <button class="card-hover-btn" onclick="event.stopPropagation(); CineFindApp.openDetailModal('${item.id}')">
+              <span>View Details</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </article>
+      `;
+    },
+
+    renderSection: function(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (!items || items.length === 0) {
+        container.innerHTML = `<div class="no-results-state"><p>No titles available in this collection.</p></div>`;
+        return;
+      }
+      container.innerHTML = items.map(item => this.createCardHtml(item)).join('');
+    },
+
+    /* Search & Multi-Filter Logic */
+    handleSearch: function(query) {
+      const clearBtn = document.getElementById('searchClearBtn');
+      if (clearBtn) {
+        if (query.trim().length > 0) clearBtn.classList.add('visible');
+        else clearBtn.classList.remove('visible');
+      }
+      this.applyFilters();
+    },
+
+    clearSearch: function() {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      const clearBtn = document.getElementById('searchClearBtn');
+      if (clearBtn) clearBtn.classList.remove('visible');
+      this.applyFilters();
+    },
+
+    focusSearch: function() {
+      const searchSection = document.getElementById('searchFilterSection');
+      const searchInput = document.getElementById('searchInput');
+      if (searchSection) searchSection.scrollIntoView({ behavior: 'smooth' });
+      if (searchInput) setTimeout(() => searchInput.focus(), 350);
+    },
+
+    filterType: function(type, e) {
+      if (e) e.preventDefault();
+      const typeSelect = document.getElementById('filterType');
+      if (typeSelect) typeSelect.value = type;
+      
+      // Update nav active state
+      document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => link.classList.remove('active'));
+      if (e && e.target) e.target.classList.add('active');
+
+      this.closeMobileMenu();
+      this.applyFilters();
+      this.scrollToSection('searchFilterSection');
+    },
+
+    applyFilters: function() {
+      const query = (document.getElementById('searchInput')?.value || '').trim().toLowerCase();
+      const type = document.getElementById('filterType')?.value || 'all';
+      const genre = document.getElementById('filterGenre')?.value || 'all';
+      const year = document.getElementById('filterYear')?.value || 'all';
+      const rating = document.getElementById('filterRating')?.value || 'all';
+      const sort = document.getElementById('filterSort')?.value || 'popularity';
+
+      const isFilterActive = query !== '' || type !== 'all' || genre !== 'all' || year !== 'all' || rating !== 'all' || sort !== 'popularity';
+
+      const filteredWrapper = document.getElementById('filteredResultsWrapper');
+      const defaultSections = document.getElementById('defaultSectionsWrapper');
+      const grid = document.getElementById('filteredResultsGrid');
+      const countBadge = document.getElementById('filteredCountBadge');
+
+      if (!isFilterActive) {
+        if (filteredWrapper) filteredWrapper.style.display = 'none';
+        if (defaultSections) defaultSections.style.display = 'block';
+        return;
+      }
+
+      // Hide default sections and show filtered grid
+      if (filteredWrapper) filteredWrapper.style.display = 'block';
+      if (defaultSections) defaultSections.style.display = 'none';
+
+      let results = CINEFIND_DATA.filter(item => {
+        // Query match (title, synopsis, actors, director, genres)
+        if (query) {
+          const matchTitle = item.title.toLowerCase().includes(query);
+          const matchOverview = item.overview.toLowerCase().includes(query);
+          const matchStarring = (item.starring || '').toLowerCase().includes(query);
+          const matchDirector = (item.director || '').toLowerCase().includes(query);
+          const matchGenres = (item.genres || []).some(g => g.toLowerCase().includes(query));
+          if (!matchTitle && !matchOverview && !matchStarring && !matchDirector && !matchGenres) return false;
+        }
+
+        // Type match
+        if (type !== 'all' && item.type !== type) return false;
+
+        // Genre match
+        if (genre !== 'all') {
+          if (!item.genres || !item.genres.includes(genre)) return false;
+        }
+
+        // Year match
+        if (year !== 'all') {
+          if (year === 'classic') {
+            if (item.year > 2022) return false;
+          } else {
+            if (item.year !== parseInt(year, 10)) return false;
+          }
+        }
+
+        // Rating match
+        if (rating !== 'all') {
+          const minRating = parseFloat(rating);
+          if (item.rating < minRating) return false;
+        }
+
+        return true;
+      });
+
+      // Sorting
+      results.sort((a, b) => {
+        if (sort === 'rating') return b.rating - a.rating;
+        if (sort === 'releaseDate') return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+        if (sort === 'title') return a.title.localeCompare(b.title);
+        // Default popularity: trending and rating weight
+        const aPop = (a.isTrending ? 2 : 1) * a.rating;
+        const bPop = (b.isTrending ? 2 : 1) * b.rating;
+        return bPop - aPop;
+      });
+
+      if (countBadge) countBadge.textContent = `${results.length} title${results.length === 1 ? '' : 's'}`;
+
+      if (grid) {
+        if (results.length === 0) {
+          grid.innerHTML = `
+            <div class="no-results-state">
+              <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <h3>No matching movies or shows found</h3>
+              <p>Try adjusting your search terms or relaxing your genre and rating filters.</p>
+              <button class="btn btn-secondary" onclick="CineFindApp.resetAllFilters()">Reset All Filters</button>
+            </div>
+          `;
+        } else {
+          grid.innerHTML = results.map(item => this.createCardHtml(item)).join('');
+        }
+      }
+    },
+
+    resetAllFilters: function() {
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) searchInput.value = '';
+      const clearBtn = document.getElementById('searchClearBtn');
+      if (clearBtn) clearBtn.classList.remove('visible');
+
+      const type = document.getElementById('filterType');
+      if (type) type.value = 'all';
+
+      const genre = document.getElementById('filterGenre');
+      if (genre) genre.value = 'all';
+
+      const year = document.getElementById('filterYear');
+      if (year) year.value = 'all';
+
+      const rating = document.getElementById('filterRating');
+      if (rating) rating.value = 'all';
+
+      const sort = document.getElementById('filterSort');
+      if (sort) sort.value = 'popularity';
+
+      document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(l => l.classList.remove('active'));
+      const homeLink = document.querySelector('.nav-link[href="#home"]');
+      if (homeLink) homeLink.classList.add('active');
+
+      this.applyFilters();
+    },
+
+    /* Movie Detail Modal */
+    openDetailModal: function(id) {
+      const item = CINEFIND_DATA.find(i => i.id === id);
+      if (!item) return;
+      this.currentModalItem = item;
+
+      const modal = document.getElementById('movieDetailModal');
+      const backdrop = document.getElementById('modalBackdrop');
+      const poster = document.getElementById('modalPoster');
+      const title = document.getElementById('modalTitle');
+      const tagline = document.getElementById('modalTagline');
+      const rating = document.getElementById('modalRating');
+      const quality = document.getElementById('modalQuality');
+      const type = document.getElementById('modalType');
+      const year = document.getElementById('modalYear');
+      const runtime = document.getElementById('modalRuntime');
+      const overview = document.getElementById('modalOverview');
+      const genresBox = document.getElementById('modalGenres');
+      const providersBox = document.getElementById('modalProviders');
+      const director = document.getElementById('modalDirector');
+      const starring = document.getElementById('modalStarring');
+      const audio = document.getElementById('modalAudio');
+      const similarGrid = document.getElementById('modalSimilarGrid');
+
+      if (backdrop) backdrop.src = item.backdropUrl || item.posterUrl;
+      if (poster) poster.src = item.posterUrl;
+      if (title) title.textContent = item.title;
+      if (tagline) tagline.textContent = item.tagline || "";
+      if (rating) rating.textContent = `⭐ ${item.rating.toFixed(1)} / 10 (${item.votes || '50K+'} votes)`;
+      if (quality) quality.textContent = item.quality || 'HD';
+      if (type) type.textContent = item.type === 'series' ? 'TV SERIES' : 'FEATURE FILM';
+      if (year) year.textContent = item.year;
+      if (runtime) runtime.textContent = item.runtime;
+      if (overview) overview.textContent = item.overview;
+      if (director) director.textContent = item.director;
+      if (starring) starring.textContent = item.starring;
+      if (audio) audio.textContent = item.audio || 'Dolby Atmos 5.1';
+
+      if (genresBox) {
+        genresBox.innerHTML = (item.genres || []).map(g => `<span class="genre-pill">${g}</span>`).join('');
+      }
+
+      if (providersBox) {
+        const provs = item.providers || ["Netflix", "Prime Video", "Apple TV+"];
+        providersBox.innerHTML = provs.map(p => `
+          <div class="provider-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+            <span>${p}</span>
+          </div>
+        `).join('');
+      }
+
+      // Similar movies recommendations
+      if (similarGrid) {
+        const similars = CINEFIND_DATA
+          .filter(i => i.id !== item.id && (i.type === item.type || (i.genres && item.genres && i.genres.some(g => item.genres.includes(g)))))
+          .slice(0, 3);
+        similarGrid.innerHTML = similars.map(sim => `
+          <div style="cursor: pointer; background: var(--bg-surface-elevated); border-radius: 8px; overflow: hidden; padding: 6px; text-align: center;" onclick="CineFindApp.openDetailModal('${sim.id}')">
+            <img src="${sim.posterUrl}" style="width: 100%; aspect-ratio: 2/3; object-fit: cover; border-radius: 6px; margin-bottom: 4px;" alt="${sim.title}"/>
+            <div style="font-size: 0.75rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${sim.title}</div>
+            <div style="font-size: 0.6875rem; color: var(--rating-gold);">⭐ ${sim.rating.toFixed(1)}</div>
+          </div>
+        `).join('');
+      }
+
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    },
+
+    closeDetailModal: function() {
+      const modal = document.getElementById('movieDetailModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    },
+
+    playCurrentModalTrailer: function() {
+      if (this.currentModalItem && this.currentModalItem.trailerId) {
+        this.playTrailer(this.currentModalItem.trailerId);
+      }
+    },
+
+    /* Trailer Modal Player */
+    playTrailer: function(youtubeId) {
+      const trailerModal = document.getElementById('trailerPlayerModal');
+      const iframe = document.getElementById('trailerIframe');
+      if (iframe) {
+        // Use standard YouTube embed with safe autoplay
+        iframe.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`;
+      }
+      if (trailerModal) {
+        trailerModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    },
+
+    closeTrailerPlayer: function() {
+      const trailerModal = document.getElementById('trailerPlayerModal');
+      const iframe = document.getElementById('trailerIframe');
+      if (iframe) iframe.src = '';
+      if (trailerModal) {
+        trailerModal.classList.remove('active');
+        // If detail modal is not open, restore scroll
+        const detailModal = document.getElementById('movieDetailModal');
+        if (!detailModal || !detailModal.classList.contains('active')) {
+          document.body.style.overflow = '';
+        }
+      }
+    },
+
+    /* Legal & Policy Modals */
+    showPolicy: function(type) {
+      const box = document.getElementById('policyContentBox');
+      const modal = document.getElementById('policyModal');
+      if (!box || !modal) return;
+
+      const policies = {
+        privacy: `
+          <h2>Privacy Policy</h2>
+          <p>Last updated: January 2026</p>
+          <h3>1. Overview</h3>
+          <p>CineFind ("we", "us", or "our") respects your privacy. This Movie Discovery platform functions purely client-side on Google Blogger. We do not store or collect personal identifying information (PII).</p>
+          <h3>2. Cookies and Third-Party Advertising</h3>
+          <p>Third-party ad networks (such as Monetag) and analytics providers may use cookies, web beacons, and IP geolocation to deliver relevant informational advertisements.</p>
+          <h3>3. External Links</h3>
+          <p>CineFind provides information regarding legal streaming providers (e.g. Netflix, Prime Video, Apple TV). We do not control third-party service policies.</p>
+        `,
+        terms: `
+          <h2>Terms of Service</h2>
+          <p>Last updated: January 2026</p>
+          <h3>1. Acceptance of Terms</h3>
+          <p>By browsing CineFind, you agree to comply with these terms. CineFind is designed as an informational discovery and catalog guide.</p>
+          <h3>2. Permitted Use</h3>
+          <p>Users may explore catalogs, search titles, view trailer previews, and locate legal streaming options. Unlawful scraping or harassment is prohibited.</p>
+        `,
+        dmca: `
+          <h2>DMCA &amp; Copyright Notice</h2>
+          <p>CineFind complies with 17 U.S.C. * 512 and the Digital Millennium Copyright Act (DMCA).</p>
+          <h3>Zero Hosting Policy</h3>
+          <p><strong>CineFind does NOT host, upload, or broadcast any video files, films, television streams, or media archives.</strong> All trailers are embedded via official YouTube players. All posters and descriptions are displayed under Fair Use informational guidelines.</p>
+          <h3>Takedown Requests</h3>
+          <p>If you believe content infringes upon your copyright, please contact our agent with verifiable documentation to have reference metadata removed.</p>
+        `,
+        disclaimer: `
+          <h2>Legal Disclaimer</h2>
+          <p>CineFind is an independent entertainment discovery portal and is not affiliated, endorsed, or partnered with Netflix, Amazon Prime, Disney, HBO, or TMDB.</p>
+          <p>All trademarked logos and studio names remain the sole property of their respective copyright holders.</p>
+        `,
+        about: `
+          <h2>About CineFind</h2>
+          <p>CineFind was created to solve the endless evening problem: "What should we watch tonight?"</p>
+          <p>We curate trending films, critically acclaimed television series, and direct streaming links across international platforms into one ultra-fast, cinematic experience.</p>
+        `,
+        contact: `
+          <h2>Contact CineFind</h2>
+          <p>Have questions, feedback, or a business inquiry regarding CineFind?</p>
+          <p>Email: <strong>contact@cinefind-portal.example</strong></p>
+          <p>We typically respond within 24–48 business hours.</p>
+        `
+      };
+
+      box.innerHTML = policies[type] || policies.about;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    },
+
+    closePolicyModal: function() {
+      const modal = document.getElementById('policyModal');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    },
+
+    /* UI Controls: Themes & Mobile Menu */
+    toggleTheme: function() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme') || 'dark';
+      let next = 'oled';
+      if (current === 'oled') next = 'slate';
+      else if (current === 'slate') next = 'dark';
+      body.setAttribute('data-theme', next);
+    },
+
+    toggleMobileMenu: function() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (drawer) drawer.classList.toggle('open');
+    },
+
+    closeMobileMenu: function() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      if (drawer) drawer.classList.remove('open');
+    },
+
+    scrollToSection: function(sectionId) {
+      this.closeMobileMenu();
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Launch app when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    CineFindApp.init();
+  });
+
+  //]]>
+  </script>
+</body>
+</html>

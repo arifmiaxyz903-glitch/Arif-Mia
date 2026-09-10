@@ -1,0 +1,6 @@
+{
+  "name": "CineFind - Blogger Movie Theme",
+  "description": "Production-ready movie and TV show discovery theme template for Google Blogger with search, filters, details modal, and Monetag ad spaces.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
